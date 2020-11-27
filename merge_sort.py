@@ -23,12 +23,18 @@ def merge_sort(arr):
         merge_sort(right)
 
         # We declare 2 initial conditions for the sub-arrays
+        # One for left and one for right
         i = 0
         j = 0
 
-        # We declare 1 initial condition for the main list
+        # We declare one initial condition for the main array
         k = 0
 
+
+        # This will execute the comparison between the sub-arrays
+        # i will go to the left, j to the right and k in the main
+        # if i is lower than j then add the number to k and add 1 space to i and k
+        # if i is higher than j then add the number to k and add 1 space to j and k
         while i < len(left) and j < len(right):
             if left[i] < right[j]:
                 arr[k] = left[i]
@@ -39,7 +45,8 @@ def merge_sort(arr):
             
             k += 1
 
-        # This block of code will compare the left part of the sublist, it will check if the
+        # These chunks of code works when we run put of elements in the array
+        # then the remaining sub-arrays will be copied to the main list
         while i < len(left):
             arr[k] = left[i]
             i += 1

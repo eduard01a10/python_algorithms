@@ -4,57 +4,59 @@
 
 import random
 
-def merge_sort(list_numbers):
+def merge_sort(arr):
     
-    ## the index of the list must be grater than 1 
-    if len(list_numbers) > 1:
+    # If the lenght of the array is greater than 1 it means that is an array with multiple arguments
+    if len(arr) > 1:
 
-        ## Mid is where the list is divided in two lists
-        mid = len(list_numbers) // 2
+        # The array is divided in two sub-arrays
+        mid = len(arr) // 2
         
-        ## The result will give two lists, one at the left and one at the right with list slice we can "cut" the slice we dont need
-        left = list_numbers[:mid]
-        right = list_numbers[mid:]
+        # After dividing the array in two parts, we're going to store both parts in variables
+        # one at the left and one at the right
+        left = arr[:mid]
+        right = arr[mid:]
 
-        ## Recursive functions are called so we can repeat the lines of code, it will give more divided lists until we reach a single list,
-        ## with one element
+        # Recursive functions are called so we can repeat the lines of code, it will give more divided lists until we reach a single list,
+        # with one element
         merge_sort(left)
         merge_sort(right)
 
-        #We declare 2 initial conditions for the sublists
+        # We declare 2 initial conditions for the sub-arrays
         i = 0
         j = 0
 
-        #We declare 1 initial condition for the main list
+        # We declare 1 initial condition for the main list
         k = 0
 
         while i < len(left) and j < len(right):
             if left[i] < right[j]:
-                list_numbers[k] = left[i]
+                arr[k] = left[i]
                 i += 1
             else:
-                list_numbers[k] = right[j]
+                arr[k] = right[j]
                 j += 1
             
             k += 1
 
         # This block of code will compare the left part of the sublist, it will check if the
         while i < len(left):
-            list_numbers[k] = left[i]
+            arr[k] = left[i]
             i += 1
             k += 1
 
         while j < len(right):
-            list_numbers[k] = right[j]
+            arr[k] = right[j]
             j += 1
             k += 1
 
-    return list_numbers
+    return arr
 
 if __name__ == "__main__":
-    list_numbers = [*range(0, 1000 + 1)]
-    random.shuffle(list_numbers)
+    arr = [*range(0, 100 + 1)]
+    random.shuffle(arr)
+    print(arr)
     
     
-    list_ordered = merge_sort(list_numbers)
+    list_ordered = merge_sort(arr)
     print(list_ordered)
